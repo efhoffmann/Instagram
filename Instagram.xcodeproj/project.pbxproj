@@ -17,6 +17,7 @@
 		7DA1F79929DC9BE600C931A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F79829DC9BE600C931A4 /* LoginViewController.swift */; };
 		7DA1F79B29DC9BF400C931A4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F79A29DC9BF400C931A4 /* RegisterViewController.swift */; };
 		7DA1F79D29DC9D8A00C931A4 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F79C29DC9D8A00C931A4 /* FeedViewController.swift */; };
+		7DA1F7A229DCC3E200C931A4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F7A129DCC3E200C931A4 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		7DA1F79829DC9BE600C931A4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7DA1F79A29DC9BF400C931A4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7DA1F79C29DC9D8A00C931A4 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		7DA1F7A129DCC3E200C931A4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C6C1C963C587BE9C8849B5B0 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,8 +71,9 @@
 		7DA1F77C29DC8D9300C931A4 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				7DA1F7A329DCC42400C931A4 /* Core */,
+				7DA1F7A029DCC3CF00C931A4 /* Utils */,
 				7DA1F79329DC993F00C931A4 /* Controllers */,
-				7DA1F77D29DC8D9300C931A4 /* AppDelegate.swift */,
 				7DA1F77F29DC8D9300C931A4 /* SceneDelegate.swift */,
 				7DA1F78329DC8D9300C931A4 /* Main.storyboard */,
 				7DA1F78629DC8D9500C931A4 /* Assets.xcassets */,
@@ -89,6 +92,22 @@
 				7DA1F79C29DC9D8A00C931A4 /* FeedViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7DA1F7A029DCC3CF00C931A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7DA1F7A129DCC3E200C931A4 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7DA1F7A329DCC42400C931A4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7DA1F77D29DC8D9300C931A4 /* AppDelegate.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		9FE9B1BD56B3F48B7D9622FD /* Pods */ = {
@@ -227,6 +246,7 @@
 				7DA1F79929DC9BE600C931A4 /* LoginViewController.swift in Sources */,
 				7DA1F77E29DC8D9300C931A4 /* AppDelegate.swift in Sources */,
 				7DA1F79D29DC9D8A00C931A4 /* FeedViewController.swift in Sources */,
+				7DA1F7A229DCC3E200C931A4 /* Utils.swift in Sources */,
 				7DA1F78029DC8D9300C931A4 /* SceneDelegate.swift in Sources */,
 				7DA1F79B29DC9BF400C931A4 /* RegisterViewController.swift in Sources */,
 			);

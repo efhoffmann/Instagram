@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ucw-lL-6Bs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,42 +16,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="S9h-bz-lZB">
+                                <rect key="frame" x="87" y="192" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="0hy-Fc-biu"/>
+                                    <constraint firstAttribute="width" constant="240" id="N98-W6-k6c"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-Hl-fsL">
-                                <rect key="frame" x="50" y="286" width="314" height="34"/>
+                                <rect key="frame" x="50" y="330" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xuB-ZG-aFQ">
-                                <rect key="frame" x="50" y="335" width="314" height="34"/>
+                                <rect key="frame" x="50" y="379" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zB3-rZ-NQ3">
-                                <rect key="frame" x="50" y="389" width="314" height="35"/>
+                                <rect key="frame" x="50" y="433" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.34901960784313724" green="0.18823529411764706" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logar"/>
+                                <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eas-Ig-x4f"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-fq-1y2">
-                                <rect key="frame" x="50" y="439" width="314" height="35"/>
+                                <rect key="frame" x="50" y="483" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.34901960780000002" green="0.18823529410000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Facebook"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ta-Ac-2bd">
-                                <rect key="frame" x="50" y="482" width="314" height="35"/>
+                                <rect key="frame" x="50" y="526" width="314" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Não tem conta? Cadastre-se"/>
+                                <connections>
+                                    <segue destination="39G-qh-eie" kind="show" id="Z8a-Jd-PyN"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="S9h-bz-lZB">
-                                <rect key="frame" x="87" y="148" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="0hy-Fc-biu"/>
-                                    <constraint firstAttribute="width" constant="240" id="N98-W6-k6c"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.69803921570000005" green="0.2784313725" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,12 +81,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6AQ-Hl-fsL" secondAttribute="trailing" constant="50" id="zRs-k8-xSk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Login" id="YzV-gc-Ksk"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="6AQ-Hl-fsL" id="GyI-A7-qiZ"/>
+                        <outlet property="passwordTextField" destination="xuB-ZG-aFQ" id="5bH-3L-bgS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="-27"/>
+            <point key="canvasLocation" x="1860.8695652173915" y="-27.455357142857142"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Cadastro-->
         <scene sceneID="gS0-bj-QOH">
             <objects>
                 <viewController id="39G-qh-eie" customClass="RegisterViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,36 +100,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Etv-Hn-DX8">
-                                <rect key="frame" x="87" y="148" width="240" height="128"/>
+                                <rect key="frame" x="87" y="192" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="9n4-PY-QAf"/>
                                     <constraint firstAttribute="height" constant="128" id="XFq-zE-uzc"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7S-ri-tUw">
-                                <rect key="frame" x="50" y="330" width="314" height="34"/>
+                                <rect key="frame" x="50" y="374" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite sua senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mt-Nj-CjT">
-                                <rect key="frame" x="50" y="374" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirme sua senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-fB-dWR">
                                 <rect key="frame" x="50" y="418" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirme sua senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-fB-dWR">
+                                <rect key="frame" x="50" y="462" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6r-9m-n5t">
-                                <rect key="frame" x="50" y="467" width="314" height="35"/>
+                                <rect key="frame" x="50" y="511" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.34901960780000002" green="0.18823529410000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cadastrar"/>
+                                <connections>
+                                    <action selector="register:" destination="39G-qh-eie" eventType="touchUpInside" id="ZTI-ho-KCQ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c5c-dv-1IX">
-                                <rect key="frame" x="50" y="286" width="314" height="34"/>
+                                <rect key="frame" x="50" y="330" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -145,10 +159,35 @@
                             <constraint firstItem="Skd-fB-dWR" firstAttribute="top" secondItem="1mt-Nj-CjT" secondAttribute="bottom" constant="10" id="yBq-vF-UBc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Cadastro" id="SWg-e7-D9F"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="A7S-ri-tUw" id="HoL-BK-yHd"/>
+                        <outlet property="nameTextField" destination="c5c-dv-1IX" id="AWl-1a-ecK"/>
+                        <outlet property="passwordTextfield" destination="1mt-Nj-CjT" id="k0y-uh-uKJ"/>
+                        <outlet property="repasswordTextField" destination="Skd-fB-dWR" id="4K8-uZ-I49"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zl-xr-7gJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-27"/>
+            <point key="canvasLocation" x="1861" y="671"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xrY-i8-QtG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ucw-lL-6Bs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o8O-kN-uUa">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hon-oN-jxJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1O-2L-foj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950.72463768115949" y="-27.455357142857142"/>
         </scene>
     </scenes>
     <resources>
