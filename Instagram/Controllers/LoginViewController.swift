@@ -14,16 +14,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var auth: Auth!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         auth = Auth.auth()
-
+        auth.addStateDidChangeListener { autentication, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "segueAutomaticLogin", sender: nil)
+            } else {
+                print("Usuário não logado")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true )
+    }
+    
+    @IBAction func unwindToLogin(_ unwindSegue: UIStoryboardSegue) {
+        do {
+            try auth.signOut()
+        } catch {
+            print("Erro ao deslogar usuário")
+        }
     }
     
     @IBAction func login(_ sender: UIButton) {

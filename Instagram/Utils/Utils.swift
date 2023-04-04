@@ -17,13 +17,10 @@ class CustomAlertController: NSObject {
         self.title = title
     }
     
-
     func showAlert()->UIAlertController {
         let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .alert)
-        // you can further customize your buttons, buttons' title etc
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
         }))
         return alertController
     }
-    
 }
