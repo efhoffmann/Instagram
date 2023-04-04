@@ -119,18 +119,91 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="KUP-Sc-5M5">
-                        <barButtonItem key="rightBarButtonItem" title="Sair" id="jOb-Oj-InS">
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                            <connections>
-                                <segue destination="tSC-55-fGs" kind="unwind" unwindAction="unwindToLogin:" id="ebe-yF-eZc"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Sair" id="jOb-Oj-InS">
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <segue destination="tSC-55-fGs" kind="unwind" unwindAction="unwindToLogin:" id="ebe-yF-eZc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="camera" id="vNH-JU-tXy">
+                                <connections>
+                                    <segue destination="5kx-KC-Cg8" kind="show" id="9qo-PC-5ML"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGa-r0-lpp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="tSC-55-fGs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4332" y="-364"/>
+        </scene>
+        <!--Nova Postagem-->
+        <scene sceneID="OgO-Lc-klC">
+            <objects>
+                <viewController id="5kx-KC-Cg8" customClass="PostViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9zZ-FT-YFF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padrao" translatesAutoresizingMaskIntoConstraints="NO" id="yVD-CP-gW6">
+                                <rect key="frame" x="20" y="112" width="374" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="INW-cO-MeD"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite uma descrição" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fF1-SY-iNu">
+                                <rect key="frame" x="20" y="390" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7M-3f-aU0">
+                                <rect key="frame" x="131.5" y="444" width="151.5" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Salvar postagem"/>
+                                <connections>
+                                    <action selector="savePost:" destination="5kx-KC-Cg8" eventType="touchUpInside" id="L5G-DB-Z04"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP6-PG-pPs">
+                                <rect key="frame" x="122.5" y="335" width="169" height="35"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="h6t-oN-uY3"/>
+                                    <constraint firstAttribute="height" constant="35" id="kFV-LA-YWo"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Selecionar imagem"/>
+                                <connections>
+                                    <action selector="selectImage:" destination="5kx-KC-Cg8" eventType="touchUpInside" id="70V-ap-dp4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ivz-5p-TAf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yVD-CP-gW6" firstAttribute="top" secondItem="Ivz-5p-TAf" secondAttribute="top" constant="20" id="9T3-Xm-RGe"/>
+                            <constraint firstItem="yVD-CP-gW6" firstAttribute="leading" secondItem="Ivz-5p-TAf" secondAttribute="leading" constant="20" id="DNQ-W0-d5v"/>
+                            <constraint firstItem="oP6-PG-pPs" firstAttribute="centerX" secondItem="9zZ-FT-YFF" secondAttribute="centerX" id="KrF-BP-pDP"/>
+                            <constraint firstItem="Ivz-5p-TAf" firstAttribute="trailing" secondItem="yVD-CP-gW6" secondAttribute="trailing" constant="20" id="PVH-LA-wrx"/>
+                            <constraint firstItem="v7M-3f-aU0" firstAttribute="centerX" secondItem="9zZ-FT-YFF" secondAttribute="centerX" id="Xqe-ot-qwD"/>
+                            <constraint firstItem="fF1-SY-iNu" firstAttribute="top" secondItem="oP6-PG-pPs" secondAttribute="bottom" constant="20" id="qQV-6b-7Va"/>
+                            <constraint firstItem="Ivz-5p-TAf" firstAttribute="trailing" secondItem="fF1-SY-iNu" secondAttribute="trailing" constant="20" id="sFu-H1-xfI"/>
+                            <constraint firstItem="fF1-SY-iNu" firstAttribute="top" secondItem="yVD-CP-gW6" secondAttribute="bottom" constant="8" id="wPB-YH-oJ4"/>
+                            <constraint firstItem="fF1-SY-iNu" firstAttribute="leading" secondItem="Ivz-5p-TAf" secondAttribute="leading" constant="20" id="xgU-Fv-NWE"/>
+                            <constraint firstItem="v7M-3f-aU0" firstAttribute="top" secondItem="fF1-SY-iNu" secondAttribute="bottom" constant="20" id="zLq-tO-N7V"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nova Postagem" id="odz-oA-ZZS"/>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="fF1-SY-iNu" id="Gkm-8x-9Na"/>
+                        <outlet property="photoImageView" destination="yVD-CP-gW6" id="lTa-Pk-FKP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLM-x6-k1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5103" y="-364"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="f48-dN-Q5q">
@@ -291,6 +364,7 @@
     <resources>
         <image name="home" width="30" height="30"/>
         <image name="logo" width="800" height="274"/>
+        <image name="padrao" width="1500" height="1500"/>
         <image name="usuarios" width="30" height="30"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
