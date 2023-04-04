@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     
@@ -16,11 +17,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var repasswordTextField: UITextField!
     
     var auth: Auth!
+    var firestore: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         auth = Auth.auth()
+        firestore = Firestore.firestore()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +59,18 @@ class RegisterViewController: UIViewController {
         
         if password.count >= 6 {
             if password == repassword {
-                auth.createUser(withEmail: email, password: password) { user, error in
+                auth.createUser(withEmail: email, password: password) { userData, error in
                     if error == nil {
-                        print("cadastro com sucesso")
+                       
+                        if let userId = userData?.user.uid {
+                            self.firestore.collection("users")
+                                .document(userId)
+                                .setData([
+                                    "name": name,
+                                    "email": email
+                                ])
+                        }
+                        
                     } else {
                         print("Erro ao cadastrar")
                     }
@@ -72,7 +84,5 @@ class RegisterViewController: UIViewController {
             let alert = CustomAlertController(title: "Erro!", message: "A senha deve ter no mínimo 6 caracteres.")
             self.present(alert.showAlert(), animated: true, completion: nil)
         }
-        
-        
     }
 }
