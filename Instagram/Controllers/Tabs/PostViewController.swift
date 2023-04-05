@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -13,11 +14,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var descriptionTextField: UITextField!
     
     var imagePicker = UIImagePickerController()
+    var storage: Storage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker.delegate = self
+        storage = Storage.storage()
     
     }
 
@@ -36,5 +39,25 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func savePost(_ sender: UIButton) {
+        let images = storage.reference()
+                    .child("images")
+        
+        let uniqueIdentifier = UUID().uuidString
+        
+        let selectedImage = self.photoImageView.image
+        if let uploadImage = selectedImage?.jpegData(compressionQuality: 0.3) {
+            let refPostImage = images
+                .child("posts")
+                .child("\(uniqueIdentifier).jpg")
+            
+            refPostImage.putData(uploadImage) { metaData, error in
+                if error == nil {
+                    print("Success")
+                } else {
+                    let alert = CustomAlertController(title: "Erro!", message: "Erro ao fazer upload da imagem.")
+                    self.present(alert.showAlert(), animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
