@@ -66,7 +66,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                     
                                     let userID = logedUser.uid
                                     
-                                    self.firestore.collection("postagens")
+                                    self.firestore.collection("posts")
                                         .document(userID)
                                         .collection("user_posts")
                                         .addDocument(data: [
