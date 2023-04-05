@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseStorageUI
 
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var postsTableView: UITableView!
     var firestore: Firestore!
@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         postsTableView.separatorStyle = .none
         firestore = Firestore.firestore()
         auth = Auth.auth()
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let userId = auth.currentUser?.uid {
             self.userLoggedId = userId
         }
-       
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,30 +53,37 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
     }
+}
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
- 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
-    }
+    // MARK: - Tables
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = postsTableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
-        
-        let index = indexPath.row
-        let post = self.posts[index]
-        
-        let description = post["description"] as? String
-        if let url = post["url"] as? String {
-            cell.postImageView.sd_setImage(with: URL(string: url))
+    extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+     
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.posts.count
         }
         
-        cell.descriptionLabel.text = description
-       
-        
-        return cell
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            
+            let cell = postsTableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+            
+            let index = indexPath.row
+            let post = self.posts[index]
+            
+            let description = post["description"] as? String
+            if let url = post["url"] as? String {
+                cell.postImageView.sd_setImage(with: URL(string: url))
+            }
+            
+            cell.descriptionLabel.text = description
+           
+            
+            return cell
+        }
     }
-}
+
+    
+    

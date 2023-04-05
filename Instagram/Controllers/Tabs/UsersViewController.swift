@@ -42,43 +42,60 @@ class UsersViewController: UIViewController {
         }
     }
 }
-    
+
 // MARK: - Tables
 
 extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-     
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.users.count
-            
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-            
-            
-            let index = indexPath.row
-            let user = self.users[index]
-            
-            let name = user["name"] as? String
-            let email = user["email"] as? String
-            
-            cell.textLabel?.text = name
-            cell.detailTextLabel?.text = email
-            
-            return cell
-        }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.users.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+        
+        
+        let index = indexPath.row
+        let user = self.users[index]
+        
+        let name = user["name"] as? String
+        let email = user["email"] as? String
+        
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = email
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.userTableView.deselectRow(at: indexPath, animated: true)
+        
+        let index = indexPath.row
+        let user = self.users[index]
+        
+        self.performSegue(withIdentifier: "gallerySegue", sender: user)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gallerySegue" {
+            let destinationView = segue.destination as! GalleryCollectionViewController
+            destinationView.user = sender as? Dictionary
+            
+        }
+    }
+}
+
 //MARK: - SearchBar
 
 extension UsersViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    
+        
         guard let searchText = userSearchBar.text, searchText != "" else {
-                return
+            return
         }
         searchUser(text: searchText)
     }
