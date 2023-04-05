@@ -43,7 +43,7 @@
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eas-Ig-x4f"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-fq-1y2">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-fq-1y2">
                                 <rect key="frame" x="50" y="483" width="314" height="35"/>
                                 <color key="backgroundColor" red="0.34901960780000002" green="0.18823529410000001" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860.8695652173915" y="-27.455357142857142"/>
+            <point key="canvasLocation" x="1749" y="-166"/>
         </scene>
         <!--Usuários-->
         <scene sceneID="zzN-ZV-2TC">

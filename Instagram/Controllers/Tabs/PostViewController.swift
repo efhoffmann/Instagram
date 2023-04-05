@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseAuth
+import FirebaseFirestore
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,13 +17,17 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var imagePicker = UIImagePickerController()
     var storage: Storage!
+    var auth: Auth!
+    var firestore: Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imagePicker.delegate = self
         storage = Storage.storage()
-    
+        auth = Auth.auth()
+        firestore = Firestore.firestore()
+        
     }
 
     @IBAction func selectImage(_ sender: UIButton) {
@@ -52,6 +58,30 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             refPostImage.putData(uploadImage) { metaData, error in
                 if error == nil {
+                    
+                    refPostImage.downloadURL { url, error in
+                        if let imageUrl = url?.absoluteString {
+                            if let description = self.descriptionTextField.text {
+                                if let logedUser = self.auth.currentUser {
+                                    
+                                    let userID = logedUser.uid
+                                    
+                                    self.firestore.collection("postagens")
+                                        .document(userID)
+                                        .collection("user_posts")
+                                        .addDocument(data: [
+                                            "description": description,
+                                            "url": imageUrl
+                                        ]) { error
+                                            in
+                                            if error == nil {
+                                                self.navigationController?.popViewController(animated: true)
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                    }
                     print("Success")
                 } else {
                     let alert = CustomAlertController(title: "Erro!", message: "Erro ao fazer upload da imagem.")
