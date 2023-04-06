@@ -32,6 +32,11 @@ class HomeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //navigationController?.setNavigationBarHidden(false, animated: true )
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         recoveryPosts()
     }

@@ -27,8 +27,7 @@ class RegisterViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true )
-        
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     @IBAction func register(_ sender: UIButton) {
@@ -67,7 +66,8 @@ class RegisterViewController: UIViewController {
                                 .document(userId)
                                 .setData([
                                     "name": name,
-                                    "email": email
+                                    "email": email,
+                                    "id": userId
                                 ])
                         }
                         

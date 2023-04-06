@@ -197,8 +197,8 @@
                                                 <constraint firstAttribute="height" constant="149" id="KCD-gz-wg9"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-p7-5c8">
-                                            <rect key="frame" x="8" y="165" width="184" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-p7-5c8">
+                                            <rect key="frame" x="8" y="162" width="184" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                                         <constraint firstAttribute="trailing" secondItem="V84-0z-lmb" secondAttribute="trailing" constant="8" id="75Q-Fw-Jvy"/>
                                         <constraint firstItem="V84-0z-lmb" firstAttribute="leading" secondItem="eyu-9f-0J0" secondAttribute="leading" constant="8" id="GWU-ce-MeK"/>
                                         <constraint firstItem="ffh-p7-5c8" firstAttribute="leading" secondItem="eyu-9f-0J0" secondAttribute="leading" constant="8" id="Kqd-a6-N5I"/>
-                                        <constraint firstItem="ffh-p7-5c8" firstAttribute="top" secondItem="V84-0z-lmb" secondAttribute="bottom" constant="8" id="eg2-Ca-bZG"/>
+                                        <constraint firstItem="ffh-p7-5c8" firstAttribute="top" secondItem="V84-0z-lmb" secondAttribute="bottom" constant="5" id="eg2-Ca-bZG"/>
                                         <constraint firstItem="V84-0z-lmb" firstAttribute="top" secondItem="eyu-9f-0J0" secondAttribute="top" constant="8" id="lUV-Pv-H8q"/>
                                         <constraint firstAttribute="bottom" secondItem="ffh-p7-5c8" secondAttribute="bottom" constant="8" id="mbh-7g-e7a"/>
                                         <constraint firstAttribute="trailing" secondItem="ffh-p7-5c8" secondAttribute="trailing" constant="8" id="pDI-ab-gh2"/>
