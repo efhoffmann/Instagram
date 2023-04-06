@@ -13,7 +13,9 @@ import FirebaseStorageUI
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var noPostsLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
+    
     var firestore: Firestore!
     var auth: Auth!
     var posts: [Dictionary<String, Any>] = []
@@ -33,7 +35,6 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.setNavigationBarHidden(false, animated: true )
         self.navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
@@ -68,8 +69,15 @@ class HomeViewController: UIViewController {
         }
      
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.posts.count
-        }
+            
+            if self.posts.count > 0 {
+                       //self.collectionView.backgroundView = nil
+                       return self.posts.count
+                   }else{
+                       noPostsLabel.text = "Você ainda não tem postagens."
+                   }
+                   return 0
+               }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
