@@ -11,6 +11,8 @@ import FirebaseStorageUI
 
 class GalleryCollectionViewController: UICollectionViewController {
     
+    @IBOutlet weak var noPostsLabel: UILabel!
+    
     var user: Dictionary<String,Any>!
     var posts: [Dictionary<String, Any>] = []
     var firestore: Firestore!
@@ -53,8 +55,14 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.posts.count
-    }
+        if self.posts.count > 0 {
+                   self.collectionView.backgroundView = nil
+                   return self.posts.count
+               }else{
+                   noPostsLabel.text = "\(String(describing: user["name"]!)) ainda não postou fotos."
+               }
+               return 0
+           }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
