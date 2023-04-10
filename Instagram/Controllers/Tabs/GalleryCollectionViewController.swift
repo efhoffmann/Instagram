@@ -55,14 +55,16 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.posts.count > 0 {
-                   self.collectionView.backgroundView = nil
-                   return self.posts.count
-               }else{
-                   noPostsLabel.text = "\(String(describing: user["name"]!)) ainda não postou fotos."
-               }
-               return 0
-           }
+        
+        if self.posts.count == 0 {
+            noPostsLabel.text = "\(String(describing: user["name"]!)) ainda não postou fotos."
+            return 0
+        } else {
+            self.collectionView.backgroundView = nil
+            return self.posts.count
+        }
+    }
+
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -76,7 +78,6 @@ class GalleryCollectionViewController: UICollectionViewController {
             cell.galleryImageView.sd_setImage(with: URL(string: url))
         }
         
-        //cell.galleryImageView.image = UIImage(named: "padrao")
         cell.descriptionLabel.text = description
         
         return cell

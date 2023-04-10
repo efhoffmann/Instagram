@@ -72,14 +72,15 @@ class HomeViewController: UIViewController {
      
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-            if self.posts.count > 0 {
-                       //self.collectionView.backgroundView = nil
-                       return self.posts.count
-                   }else{
-                       noPostsLabel.text = "Você ainda não tem postagens."
-                   }
-                   return 0
-               }
+            if self.posts.count == 0 {
+                noPostsLabel.text = "Você ainda não tem publicações. Clique no ícone acima para realizar sua primeira postagem!"
+                return 0
+            } else {
+                noPostsLabel.text = ""
+                return self.posts.count
+            }
+        }
+            
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             

@@ -20,7 +20,6 @@ class UsersViewController: UIViewController {
         
         firestore = Firestore.firestore()
         self.userSearchBar.delegate = self
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,11 +55,11 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+       // var self.users = users.sorted { ($0["name"] as! String) < ($1["name"] as! String)}
+        
         let cell = userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-        
-        
-        let index = indexPath.row
-        let user = self.users[index]
+        let user = self.users[indexPath.row]
         
         let name = user["name"] as? String
         let email = user["email"] as? String
@@ -74,8 +73,7 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.userTableView.deselectRow(at: indexPath, animated: true)
         
-        let index = indexPath.row
-        let user = self.users[index]
+        let user = self.users[indexPath.row]
         
         self.performSegue(withIdentifier: "gallerySegue", sender: user)
     }

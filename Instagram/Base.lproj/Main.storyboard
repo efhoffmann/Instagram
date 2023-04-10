@@ -267,8 +267,8 @@
                                     <rect key="frame" x="0.0" y="504" width="414" height="140"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No posts yet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-EO-mdX">
-                                            <rect key="frame" x="159" y="60" width="96" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No posts yet" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-EO-mdX">
+                                            <rect key="frame" x="10" y="60" width="394" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -276,7 +276,9 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="IAg-EO-mdX" secondAttribute="trailing" constant="10" id="7Ra-7f-2fv"/>
                                         <constraint firstItem="IAg-EO-mdX" firstAttribute="centerX" secondItem="u2c-Gj-sEF" secondAttribute="centerX" id="ZsD-K9-ecn"/>
+                                        <constraint firstItem="IAg-EO-mdX" firstAttribute="leading" secondItem="u2c-Gj-sEF" secondAttribute="leading" constant="10" id="lRZ-sb-Kac"/>
                                         <constraint firstItem="IAg-EO-mdX" firstAttribute="centerY" secondItem="u2c-Gj-sEF" secondAttribute="centerY" id="sNz-10-wjZ"/>
                                     </constraints>
                                 </view>
