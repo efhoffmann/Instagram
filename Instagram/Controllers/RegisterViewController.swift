@@ -27,7 +27,7 @@ class RegisterViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        //self.navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     @IBAction func register(_ sender: UIButton) {

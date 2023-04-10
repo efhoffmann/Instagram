@@ -29,7 +29,8 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: true )
+        //navigationController?.setNavigationBarHidden(true, animated: true )
+       // self.navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     @IBAction func unwindToLogin(_ unwindSegue: UIStoryboardSegue) {
