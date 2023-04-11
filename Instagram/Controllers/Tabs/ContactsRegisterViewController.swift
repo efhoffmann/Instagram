@@ -19,6 +19,7 @@ class ContactsRegisterViewController: UIViewController {
     var firestore: Firestore!
     var userLoggedId: String!
     var userLoggedEmail: String!
+    var user: Dictionary<String,Any>!
     
     //Extension
     var users: [Dictionary<String,Any>] = []
@@ -145,6 +146,18 @@ extension ContactsRegisterViewController: UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.showUsersTableView.deselectRow(at: indexPath, animated: true)
+        if users.count == 0 {
+            return
+        }
+        let index = indexPath.row
+        let contact = self.users[index]
+        
+        saveContacts(contactDatas: contact)
+    }
+    
+   
     func recoveryUsers() {
         self.users.removeAll()
         self.showUsersTableView.reloadData()

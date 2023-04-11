@@ -83,17 +83,19 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
             cell.textLabel?.isEnabled = false
             cell.detailTextLabel?.text = ""
-            return cell
+           // return cell
+        } else {
+            let contactData = self.users[indexPath.row]
+            
+            let name = contactData["name"] as? String
+            let email = contactData["email"] as? String
+            
+            cell.textLabel?.isEnabled = true
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.textLabel?.text = name
+            cell.detailTextLabel?.text = email
         }
-        let index = indexPath.row
-        let contactData = self.users[index]
-        
-        let name = contactData["name"] as? String
-        let email = contactData["email"] as? String
-        
-        cell.textLabel?.text = name
-        cell.detailTextLabel?.text = email
-        
+
         return cell
     }
     

@@ -32,7 +32,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func register(_ sender: UIButton) {
         
-        guard let name = nameTextField.text, !name.isEmpty else {
+        guard let name = nameTextField.text?.lowercased(), !name.isEmpty else {
             let alert = CustomAlertController(title: "Atenção!", message: "Preencha o campo com seu nome.")
             self.present(alert.showAlert(), animated: true, completion: nil)
             return
