@@ -37,11 +37,30 @@ class UsersViewController: UIViewController {
         recoveryUsers()
     }
     
-    func recoveryUsers() {
+   /* func recoveryUsers() {
         self.users.removeAll()
         self.userTableView.reloadData()
         
         firestore.collection("users").getDocuments { resultSnapshot, error in
+            if let snapshot = resultSnapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    self.users.append(data)
+                }
+                self.userTableView.reloadData()
+            }
+        }
+    }
+} */
+    
+    func recoveryUsers() {
+        self.users.removeAll()
+        self.userTableView.reloadData()
+        
+        firestore.collection("users")
+            .document(userId)
+            .collection("contacts")
+            .getDocuments { resultSnapshot, error in
             if let snapshot = resultSnapshot {
                 for document in snapshot.documents {
                     let data = document.data()
@@ -60,12 +79,21 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
         return 1
     }
     
+   /* func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.users.count
+        
+    } */
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let contactsTotal = self.users.count
+        if contactsTotal == 0 {
+            return 1
+        }
         return self.users.count
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   /* func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
        // var self.users = users.sorted { ($0["name"] as! String) < ($1["name"] as! String)}
         
@@ -79,14 +107,39 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
         cell.detailTextLabel?.text = email
         
         return cell
+    } */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+        //let user = self.users[indexPath.row]
+        
+        if self.users.count == 0 {
+            cell.textLabel?.text = "Nenhum contato cadastrado"
+            cell.detailTextLabel?.text = ""
+            return cell
+        }
+        let index = indexPath.row
+        let contactData = self.users[index]
+        
+        let name = contactData["name"] as? String
+        let email = contactData["email"] as? String
+        
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = email
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.userTableView.deselectRow(at: indexPath, animated: true)
         
-        let user = self.users[indexPath.row]
+       // let user = self.users[indexPath.row]
+        let index = indexPath.row
+        let contact = self.users[index]
         
-        self.performSegue(withIdentifier: "gallerySegue", sender: user)
+        self.performSegue(withIdentifier: "gallerySegue", sender: contact)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
