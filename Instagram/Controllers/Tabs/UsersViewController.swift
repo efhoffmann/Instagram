@@ -37,22 +37,6 @@ class UsersViewController: UIViewController {
         recoveryUsers()
     }
     
-   /* func recoveryUsers() {
-        self.users.removeAll()
-        self.userTableView.reloadData()
-        
-        firestore.collection("users").getDocuments { resultSnapshot, error in
-            if let snapshot = resultSnapshot {
-                for document in snapshot.documents {
-                    let data = document.data()
-                    self.users.append(data)
-                }
-                self.userTableView.reloadData()
-            }
-        }
-    }
-} */
-    
     func recoveryUsers() {
         self.users.removeAll()
         self.userTableView.reloadData()
@@ -78,12 +62,7 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-   /* func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
-        
-    } */
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let contactsTotal = self.users.count
         if contactsTotal == 0 {
@@ -93,22 +72,6 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
         
     }
     
-   /* func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-       // var self.users = users.sorted { ($0["name"] as! String) < ($1["name"] as! String)}
-        
-        let cell = userTableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-        let user = self.users[indexPath.row]
-        
-        let name = user["name"] as? String
-        let email = user["email"] as? String
-        
-        cell.textLabel?.text = name
-        cell.detailTextLabel?.text = email
-        
-        return cell
-    } */
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -117,6 +80,8 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
         
         if self.users.count == 0 {
             cell.textLabel?.text = "Nenhum contato cadastrado"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+            cell.textLabel?.isEnabled = false
             cell.detailTextLabel?.text = ""
             return cell
         }
@@ -134,8 +99,9 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.userTableView.deselectRow(at: indexPath, animated: true)
-        
-       // let user = self.users[indexPath.row]
+        if users.count == 0 {
+            return
+        }
         let index = indexPath.row
         let contact = self.users[index]
         
