@@ -24,6 +24,7 @@
 		7DA1F7AD29DCDA0700C931A4 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F7AC29DCDA0700C931A4 /* UsersViewController.swift */; };
 		7DA1F7B129DCEB1700C931A4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA1F7B029DCEB1700C931A4 /* PostViewController.swift */; };
 		7DA222B029DE0A990025353E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA222AF29DE0A990025353E /* PostTableViewCell.swift */; };
+		7DB4387329E4AAA400616273 /* ContactsRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4387229E4AAA400616273 /* ContactsRegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		7DA1F7AC29DCDA0700C931A4 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		7DA1F7B029DCEB1700C931A4 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		7DA222AF29DE0A990025353E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7DB4387229E4AAA400616273 /* ContactsRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRegisterViewController.swift; sourceTree = "<group>"; };
 		C6C1C963C587BE9C8849B5B0 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 				7DA1F7AC29DCDA0700C931A4 /* UsersViewController.swift */,
 				7DA1F7B029DCEB1700C931A4 /* PostViewController.swift */,
 				7D9F479929DE34D3007535EC /* GalleryCollectionViewController.swift */,
+				7DB4387229E4AAA400616273 /* ContactsRegisterViewController.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				7D57B57629DE384400B7D18B /* GalleryCollectionViewCell.swift in Sources */,
 				7DA1F7B129DCEB1700C931A4 /* PostViewController.swift in Sources */,
 				7DA1F79929DC9BE600C931A4 /* LoginViewController.swift in Sources */,
+				7DB4387329E4AAA400616273 /* ContactsRegisterViewController.swift in Sources */,
 				7DA1F77E29DC8D9300C931A4 /* AppDelegate.swift in Sources */,
 				7DA1F7A229DCC3E200C931A4 /* Utils.swift in Sources */,
 				7DA1F78029DC8D9300C931A4 /* SceneDelegate.swift in Sources */,

@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     var firestore: Firestore!
     var auth: Auth!
     var posts: [Dictionary<String, Any>] = []
+    //var user: Dictionary<String,Any>!
     var userLoggedId: String!
     
     override func viewDidLoad() {
@@ -31,7 +32,6 @@ class HomeViewController: UIViewController {
         if let userId = auth.currentUser?.uid {
             self.userLoggedId = userId
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
             if self.posts.count == 0 {
-                noPostsLabel.text = "Você ainda não tem publicações. Clique no ícone acima para realizar sua primeira postagem!"
+                noPostsLabel.text = "Bem vindo! Você ainda não tem publicações. Clique no ícone acima para realizar sua primeira postagem!"
                 return 0
             } else {
                 noPostsLabel.text = ""

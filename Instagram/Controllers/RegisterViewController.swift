@@ -73,6 +73,10 @@ class RegisterViewController: UIViewController {
                         
                     } else {
                         print("Erro ao cadastrar")
+                        let errorType = error! as NSError
+                        
+                        self.error(type: errorType)
+                        
                     }
                 }
                 
@@ -85,4 +89,29 @@ class RegisterViewController: UIViewController {
             self.present(alert.showAlert(), animated: true, completion: nil)
         }
     }
+    
+    // MARK: - Error Handling
+    
+    func error(type: NSError) {
+        if let errorCode = type.userInfo["FIRAuthErrorUserInfoNameKey"]{
+            
+            let textError = errorCode as! String
+            var errorMessage = ""
+            
+            switch textError {
+            case "ERROR_INVALID_EMAIL" :
+                errorMessage = "E-mail inválido. Digite um e-mail válido."
+                //break
+            case "ERROR_EMAIL_ALREADY_IN_USE":
+                errorMessage = "E-mail já existe. Cadastre um e-mail diferente."
+                //break
+            default:
+                errorMessage = "Dados digitados incorretamente."
+            }
+            let alert = CustomAlertController(title: "Erro!", message: errorMessage)
+            self.present(alert.showAlert(), animated: true, completion: nil)
+            
+        }
+    }
+    
 }

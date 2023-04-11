@@ -156,7 +156,13 @@
                             <constraint firstItem="cwT-bt-75j" firstAttribute="leading" secondItem="nvs-hs-Hm7" secondAttribute="leading" id="ZFE-IH-kip"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Usuários" id="yNW-mW-bU1"/>
+                    <navigationItem key="navigationItem" title="Usuários" id="yNW-mW-bU1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qfa-lu-mOI">
+                            <connections>
+                                <segue destination="Sia-tT-NSL" kind="show" id="Fmj-wh-xdh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="userSearchBar" destination="cwT-bt-75j" id="nbb-lY-bJ7"/>
                         <outlet property="userTableView" destination="Q0R-gY-7Ev" id="fXW-p7-fhX"/>
@@ -166,6 +172,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cir-wf-oKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4332" y="305"/>
+        </scene>
+        <!--Cadastro de usuário-->
+        <scene sceneID="y8o-tZ-f9Z">
+            <objects>
+                <viewController id="Sia-tT-NSL" customClass="ContactsRegisterViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WIn-pA-Cyi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digite um nome ou e-mail para cadastrar um novo contato:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sec-cY-pQx">
+                                <rect key="frame" x="20" y="129" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Me1-tT-vIi">
+                                <rect key="frame" x="20" y="205" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twe-8b-nIH">
+                                <rect key="frame" x="157.5" y="279" width="99" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cadastrar"/>
+                                <connections>
+                                    <action selector="registerContatcs:" destination="Sia-tT-NSL" eventType="touchUpInside" id="eKK-Gz-PFs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oop-Bw-mLt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="twe-8b-nIH" firstAttribute="centerX" secondItem="WIn-pA-Cyi" secondAttribute="centerX" id="4TV-ZM-MUH"/>
+                            <constraint firstItem="Me1-tT-vIi" firstAttribute="top" secondItem="Sec-cY-pQx" secondAttribute="bottom" constant="35" id="CBD-Vh-N4Z"/>
+                            <constraint firstItem="Me1-tT-vIi" firstAttribute="leading" secondItem="oop-Bw-mLt" secondAttribute="leading" constant="20" id="I7y-Wy-5lv"/>
+                            <constraint firstItem="oop-Bw-mLt" firstAttribute="trailing" secondItem="Sec-cY-pQx" secondAttribute="trailing" constant="20" id="Vpw-ZU-2Db"/>
+                            <constraint firstItem="Sec-cY-pQx" firstAttribute="leading" secondItem="oop-Bw-mLt" secondAttribute="leading" constant="20" id="eb2-uU-W8p"/>
+                            <constraint firstItem="oop-Bw-mLt" firstAttribute="trailing" secondItem="Me1-tT-vIi" secondAttribute="trailing" constant="20" id="h3y-In-uzx"/>
+                            <constraint firstItem="Sec-cY-pQx" firstAttribute="top" secondItem="oop-Bw-mLt" secondAttribute="top" constant="37" id="p9l-F9-eB3"/>
+                            <constraint firstItem="twe-8b-nIH" firstAttribute="top" secondItem="Me1-tT-vIi" secondAttribute="bottom" constant="40" id="qKd-Yg-ame"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cadastro de usuário" id="fhf-D1-WDb"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Me1-tT-vIi" id="59p-q0-Ygo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfm-FW-Cqj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4331.884057971015" y="1037.2767857142858"/>
         </scene>
         <!--Gallery Collection View Controller-->
         <scene sceneID="T4e-vw-eBG">
