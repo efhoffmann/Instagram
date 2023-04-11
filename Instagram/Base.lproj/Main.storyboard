@@ -425,7 +425,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="padrao" translatesAutoresizingMaskIntoConstraints="NO" id="yVD-CP-gW6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVD-CP-gW6">
                                 <rect key="frame" x="20" y="112" width="374" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="INW-cO-MeD"/>
@@ -642,7 +642,6 @@
     <resources>
         <image name="home" width="30" height="30"/>
         <image name="logo" width="800" height="274"/>
-        <image name="padrao" width="1500" height="1500"/>
         <image name="usuarios" width="30" height="30"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

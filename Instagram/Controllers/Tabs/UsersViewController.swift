@@ -7,19 +7,30 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorageUI
+import FirebaseAuth
 
 class UsersViewController: UIViewController {
     
     @IBOutlet weak var userSearchBar: UISearchBar!
     @IBOutlet weak var userTableView: UITableView!
+    
+    var auth: Auth!
     var firestore: Firestore!
     var users: [Dictionary<String, Any>] = []
+    var userId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        auth = Auth.auth()
         firestore = Firestore.firestore()
         self.userSearchBar.delegate = self
+        
+        if let userLoggedId = auth.currentUser?.uid {
+            self.userId = userLoggedId
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -36,7 +36,7 @@ class ContactsRegisterViewController: UIViewController {
     @IBAction func registerContatcs(_ sender: Any) {
         
         if let typedEmail = emailTextField.text {
-            if typedEmail == self.userLoggedEmail {
+            if typedEmail.lowercased() == self.userLoggedEmail {
                 let alert = CustomAlertController(title: "Atenção!", message: "Você está adicionando o próprio e-mail.")
                 self.present(alert.showAlert(), animated: true, completion: nil)
                 return
