@@ -16,7 +16,9 @@ class LoginViewController: UIViewController {
     
     var auth: Auth!
     
-    private let loginButton: UIButton = {
+    
+    
+    /* private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("logIn", for: .normal)
         button.backgroundColor = .link
@@ -25,7 +27,7 @@ class LoginViewController: UIViewController {
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
-    }()
+    }() */
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,8 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
         }
+        
+        loginButton.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
@@ -95,4 +99,25 @@ class LoginViewController: UIViewController {
             }
         }
     }
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBSDKLoginKit.FBLoginButton, didCompleteWith result: FBSDKLoginKit.LoginManagerLoginResult?, error: Error?) {
+        guard let token = result?.token?.tokenString else {
+            print("User failed to log in with facebook")
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        
+        FirebaseAuth.Auth.auth().signIn(with: credential) { result, error in
+            
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {
+        //no operation
+    }
+    
+    
 }
