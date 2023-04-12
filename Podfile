@@ -11,5 +11,7 @@ target 'Instagram' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
+  pod 'FBSDKCoreKit' 
+  pod 'FBSDKLoginKit'
 
 end

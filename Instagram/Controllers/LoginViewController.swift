@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
 
@@ -14,6 +15,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var auth: Auth!
+    
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("logIn", for: .normal)
+        button.backgroundColor = .link
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        return button
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +38,26 @@ class LoginViewController: UIViewController {
                 print("Usuário não logado")
             }
         }
+        
+        let loginButton = FBLoginButton()
+        loginButton.center = view.center
+        loginButton.frame = CGRect(x: 50, y: 480, width: 292, height: 37)
+        view.addSubview(loginButton)
+        
+        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
+            print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+
+    }
+    
+    
+    @IBAction func facebookLogin(_ sender: UIButton) {
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
