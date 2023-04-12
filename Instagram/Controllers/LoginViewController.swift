@@ -16,8 +16,6 @@ class LoginViewController: UIViewController {
     
     var auth: Auth!
     
-    
-    
     /* private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("logIn", for: .normal)
@@ -28,6 +26,18 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }() */
+    
+    private let facebookLoginButton = FBLoginButton()
+    
+
+    
+    
+ /*   private let facebookLoginButton: FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = ["email, public_profile"]
+        return button
+    }() */
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,28 +50,16 @@ class LoginViewController: UIViewController {
                 print("Usuário não logado")
             }
         }
+       // facebookLoginButton.permissions = ["email, public_profile"]
+        facebookLoginButton.center = view.center
+        facebookLoginButton.frame = CGRect(x: 50, y: 480, width: 292, height: 37)
+        view.addSubview(facebookLoginButton)
         
-        let loginButton = FBLoginButton()
-        loginButton.center = view.center
-        loginButton.frame = CGRect(x: 50, y: 480, width: 292, height: 37)
-        view.addSubview(loginButton)
-        
-        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
+       NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
         }
         
-        loginButton.delegate = self
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-
-    }
-    
-    
-    @IBAction func facebookLogin(_ sender: UIButton) {
-       
+        facebookLoginButton.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +100,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBSDKLoginKit.FBLoginButton, didCompleteWith result: FBSDKLoginKit.LoginManagerLoginResult?, error: Error?) {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         guard let token = result?.token?.tokenString else {
             print("User failed to log in with facebook")
             return
@@ -110,8 +108,17 @@ extension LoginViewController: LoginButtonDelegate {
         
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
         
-        FirebaseAuth.Auth.auth().signIn(with: credential) { result, error in
+       FirebaseAuth.Auth.auth().signIn(with: credential) { [weak self] authresult, error in
             
+           guard let strongSelf = self else {
+               return
+           }
+           guard let result = authresult, error == nil else {
+                print("facebook credential login failed")
+                return
+            }
+                print("sucess")
+                strongSelf.navigationController?.dismiss(animated: true)
         }
     }
     
