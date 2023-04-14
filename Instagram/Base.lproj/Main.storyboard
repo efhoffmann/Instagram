@@ -623,6 +623,7 @@
                     <navigationItem key="navigationItem" title="Cadastro" id="SWg-e7-D9F"/>
                     <connections>
                         <outlet property="emailTextField" destination="A7S-ri-tUw" id="HoL-BK-yHd"/>
+                        <outlet property="instagramImageView" destination="Etv-Hn-DX8" id="6ps-7w-EQc"/>
                         <outlet property="nameTextField" destination="c5c-dv-1IX" id="AWl-1a-ecK"/>
                         <outlet property="passwordTextfield" destination="1mt-Nj-CjT" id="k0y-uh-uKJ"/>
                         <outlet property="repasswordTextField" destination="Skd-fB-dWR" id="4K8-uZ-I49"/>

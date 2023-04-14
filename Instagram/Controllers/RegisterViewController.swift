@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     
+    @IBOutlet var instagramImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
@@ -24,7 +25,18 @@ class RegisterViewController: UIViewController {
 
         auth = Auth.auth()
         firestore = Firestore.firestore()
+        
+        self.instagramImageView.image = UIImage(imageLiteralResourceName: "logo3")
+
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+           super.viewDidAppear(animated)
+           //.transitionCrossDissolve  transitionCurlUp
+           UIView.transition(with: self.instagramImageView, duration: 2.0, options: .transitionFlipFromTop) {
+               self.instagramImageView.image = UIImage(imageLiteralResourceName: "logo")
+           }
+       }
     
     override func viewWillAppear(_ animated: Bool) {
         //self.navigationItem.leftBarButtonItem?.isEnabled = false
