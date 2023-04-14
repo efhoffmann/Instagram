@@ -28,19 +28,10 @@ class LoginViewController: UIViewController {
     }() */
     
     private let facebookLoginButton = FBLoginButton()
-    
 
-    
-    
- /*   private let facebookLoginButton: FBLoginButton = {
-        let button = FBLoginButton()
-        button.permissions = ["email, public_profile"]
-        return button
-    }() */
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
+        // view.addSubview(imageView)
         
         auth = Auth.auth()
         auth.addStateDidChangeListener { autentication, user in
@@ -50,20 +41,24 @@ class LoginViewController: UIViewController {
                 print("Usuário não logado")
             }
         }
-       // facebookLoginButton.permissions = ["email, public_profile"]
+        // facebookLoginButton.permissions = ["email, public_profile"]
         facebookLoginButton.center = view.center
         facebookLoginButton.frame = CGRect(x: 50, y: 480, width: 292, height: 37)
         view.addSubview(facebookLoginButton)
         
-       NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
+        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
         }
         
         facebookLoginButton.delegate = self
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true )
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.hidesBackButton = true
+       navigationController?.setNavigationBarHidden(false, animated: true )
+        
     }
     
     @IBAction func unwindToLogin(_ unwindSegue: UIStoryboardSegue) {
@@ -125,6 +120,5 @@ extension LoginViewController: LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginKit.FBLoginButton) {
         //no operation
     }
-    
-    
+
 }
